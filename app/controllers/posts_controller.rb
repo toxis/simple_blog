@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   
   before_filter :get_post, :only => [:show, :edit, :destroy, :update]
   
+  http_basic_authenticate_with name: "blog", password: "blog", except: [:index, :show]
+  
   # GET: /posts/new
   def new
     @post = Post.new
