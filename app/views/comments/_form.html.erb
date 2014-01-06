@@ -1,0 +1,12 @@
+<h3>Add comment</h3>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p>
+    <%= f.text_field :author, class: 'form-control', placeholder: 'Author' %>
+  </p>
+  <p>
+    <%= f.text_area :message, class: 'form-control', placeholder: 'Message' %>
+  </p>
+  <p>
+    <%= f.submit 'Add comment', class: 'btn btn-default' %>
+  </p>
+<% end %>
