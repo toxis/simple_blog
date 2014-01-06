@@ -1,12 +1,26 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
+<div class="post">
+	<h2><%= @post.title %></h2>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<%= h(@post.text).gsub(/\n/, '<br />').html_safe %>
+		</div>
+		<div class="panel-footer">
+			<%= link_to edit_post_path(@post), class: 'btn btn-success' do %>
+				<span class="glyphicon glyphicon-pencil"></span> Edit
+			<% end %>
+			
+			<%= link_to post_path(@post), method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger' do %>
+				<span class="glyphicon glyphicon-remove"></span> Delete
+			<% end %>
+			
+			<em style="float: right;">
+				<%= "#{@post.created_at.strftime('Created on %B %d %Y at %H:%M')}" %>
+				<%= " - Last update #{time_ago_in_words(@post.updated_at)}" %>
+			</em>
+		</div>
+	</div>
+</div>
 
-<%= link_to "Edit", edit_post_path(@post) %>
-<%= link_to "Back", posts_path %>
+<div class='post_actions'>
+	<%= link_to "Back", posts_path, :class => 'btn btn-default' %>
+</div>

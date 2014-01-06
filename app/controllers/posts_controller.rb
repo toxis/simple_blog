@@ -48,4 +48,10 @@ class PostsController < ApplicationController
     
     redirect_to posts_path
   end
+  
+  # GET: /search/:q
+  def search
+    @posts = Post.search(params[:q])
+    render 'index'
+  end
 end
