@@ -9,7 +9,7 @@
 				<span class="glyphicon glyphicon-pencil"></span> Edit
 			<% end %>
 			
-			<%= link_to post_path(@post), method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger' do %>
+			<%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
 				<span class="glyphicon glyphicon-remove"></span> Delete
 			<% end %>
 			
@@ -25,9 +25,9 @@
 	<%= link_to "Back", posts_path, :class => 'btn btn-default' %>
 </div>
 
-
-
 <h3>Comments</h3>
-<%= render @post.comments %>
+<%= render @comments %>
+
+<%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
 
 <%= render 'comments/form' %>

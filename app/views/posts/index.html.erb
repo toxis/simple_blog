@@ -16,4 +16,6 @@
 
 <% if @posts.empty? %>
 	<em>No posts found</em>
+<% else %>
+	<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 <% end %>

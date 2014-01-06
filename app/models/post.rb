@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   
   scope :drafts, -> { where(draft: true).order(updated_at: :desc) }
   
+  self.per_page = 5
+  
   def self.search(search)
     if search
       search_length = search.split.length

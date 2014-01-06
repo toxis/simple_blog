@@ -22,12 +22,12 @@ class PostsController < ApplicationController
   
   # GET: /post/:id
   def show
-    # nothing
+    @comments = @post.comments.paginate(page: params[:page])
   end
   
   # GET: /posts
   def index
-    @posts = Post.where(draft: [false, nil]).order(updated_at: :desc)
+    @posts = Post.where(draft: [false, nil]).order(updated_at: :desc).paginate(page: params[:page])
     @title = 'Listing posts (' + @posts.count.to_s + ')'
   end
   
@@ -52,14 +52,14 @@ class PostsController < ApplicationController
   
   # GET: /search/:q
   def search
-    @posts = Post.search(params[:q])
+    @posts = Post.paginate(page: params[:page]).search(params[:q])
     @title = "Results for '" + params[:q] + "' (" + @posts.count.to_s + ')'
     render 'index'
   end
   
   # GET: /drafts
   def drafts
-    @posts = Post.drafts
+    @posts = Post.drafts.paginate(page: params[:page])
     @title = 'Listing drafts (' + @posts.count.to_s + ')'
     render 'index'
   end
