@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
   
   validates :title, presence: true, length: { minimum: 3 }
   
+  scope :drafts, -> { where(draft: true).order(updated_at: :desc) }
+  
   def self.search(search)
     if search
       search_length = search.split.length

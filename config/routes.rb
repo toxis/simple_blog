@@ -5,6 +5,7 @@ SimpleBlog::Application.routes.draw do
   get 'home' => 'static#home'
   get 'about' => 'static#about'
   get 'search' => 'posts#search', as: :search
+  get 'drafts' => 'posts#drafts', as: :posts_drafts
   
   root 'static#home'
   

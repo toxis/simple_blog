@@ -21,6 +21,11 @@
   </p>
  
   <p>
+  	<%= f.check_box :draft %>
+  	<%= f.label :draft %>
+  </p>
+ 
+  <p>
     <%= f.submit @post.new_record? ? 'Create post' : 'Update post', class: 'btn btn-default' %>
   </p>
 <% end %>
