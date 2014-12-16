@@ -26,6 +26,4 @@ production:
   adapter: postgresql
   encoding: utf8
   database: simple_blog_production
-  username: postgres
-  password: 
   
