@@ -31,5 +31,5 @@ rerun.txt
 pickle-email-*.html
 .project
 config/initializers/secret_token.rb
-Gemfile.lock
+/.c9
 
